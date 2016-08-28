@@ -45,7 +45,7 @@ int neuron_transfer(struct neuron *neuron, u_int8_t input[][COLUMN_WEIGHT]);
  * @ param input - input array
  * @ param diff - difference between output of the neuron and the desired output
  */
-void neuron_change_weights(struct neuron *neuron, u_int8_t input[][COLUMN_WEIGHT], __int8_t diff);
+void neuron_change_weights(struct neuron *neuron, u_int8_t input[][COLUMN_WEIGHT]);
 
 //void neuron_prepare_serialization(struct neuron *neuron);
 //

@@ -37,7 +37,7 @@ int neuron_transfer(struct neuron *neuron, u_int8_t input[][COLUMN_WEIGHT]) {
 	return power;
 }
 
-void neuron_change_weights(struct neuron *neuron, u_int8_t input[][COLUMN_WEIGHT], __int8_t diff) {
+void neuron_change_weights(struct neuron *neuron, u_int8_t input[][COLUMN_WEIGHT]) {
 	FOR_EACH_WEIGHT(r,c)
 			neuron->weight[r][c] = input[r][c];
 }

@@ -70,31 +70,11 @@ int network_study(struct neural_network *self, u_int8_t input[][COLUMN_WEIGHT], 
 	if (strlen(name) >= LENGHT_NAME)
 		return RC_BIG_NAME_LENGHT;
 
-	int corrected_output[self->count];
-	const size_t size_array = self->count * sizeof(int);
-	memset(corrected_output, 0, size_array);
-
 	memcpy(self->neuron[self->number_learned].name, name, LENGHT_NAME);
 
-	corrected_output[self->number_learned++] = 1;
+	neuron_change_weights(&self->neuron[self->number_learned], input);
+	self->neuron[self->number_learned++].learned = 1;
 
-	int output[self->count];
-	int ret = network_handle_hard(self, input, output);
-	if (ret != RC_OK) {
-		return RC_ERROR;
-	}
-	int learned = 0;
-	while (memcmp(corrected_output, output, size_array)) {
-		for (int i = 0; i < self->count && !learned; ++i) {
-			int diff = corrected_output[i] - output[i];
-			if (!self->neuron[i].learned)
-				neuron_change_weights(&self->neuron[i], input, diff);
-			if (diff == 1 && !self->neuron[i].learned)
-				learned = self->neuron[i].learned = 1;
-
-		}
-		network_handle_hard(self, input, output);
-	}
 	return RC_OK;
 }
 
