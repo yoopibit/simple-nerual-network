@@ -14,7 +14,7 @@ unsigned char K_letter[][10] = {
 				" X      X "
 };
 
-unsigned char first_letter[][10] = {
+unsigned char first_num[][10] = {
 		"        X ",
 		"      X X ",
 		"    X   X ",
@@ -23,7 +23,7 @@ unsigned char first_letter[][10] = {
 		"        X "
 };
 
-unsigned char second_letter[][10] = {
+unsigned char second_num[][10] = {
 		"    XXXX  ",
 		"   X    X ",
 		"       X  ",
@@ -32,7 +32,7 @@ unsigned char second_letter[][10] = {
 		"   XXXXXX "
 };
 
-unsigned char third_letter[][10] = {
+unsigned char third_num[][10] = {
 		"    XXXX  ",
 		"   X    X ",
 		"      X   ",
@@ -41,14 +41,24 @@ unsigned char third_letter[][10] = {
 		"    XXXX  "
 };
 
-unsigned char first_letter_test[][10] = {
+unsigned char first_num_test[][10] = {
 		"        X ",
-		"   X  X   ",
-		"   X    X ",
+		"     X  X ",
+		"  X     X ",
 		"        X ",
 		"     X    ",
 		"        X "
 };
+
+unsigned char K_letter_test[][10] = {
+		" X    XXXX",
+		" X   X    ",
+		"  XX      ",
+		" X  X     ",
+		" X     X  ",
+		"  X     X "
+};
+
 
 unsigned char free_letter[][10] = {
 		"          ",
