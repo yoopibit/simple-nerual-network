@@ -2,7 +2,6 @@
 // Created by yura on 8/28/16.
 //
 
-#include <stdbool.h>
 #include "neural_network.h"
 
 int network_init(struct neural_network **self, size_t count, int neuron_minimum) {
@@ -22,7 +21,7 @@ int network_init(struct neural_network **self, size_t count, int neuron_minimum)
 	return RC_OK;
 }
 
-int network_handle_hard(struct neural_network *self, u_int8_t input[][COLUMN_WEIGHT], int *output) {
+int network_handle_hard(struct neural_network *self, wsize input[][COLUMN_WEIGHT], int *output) {
 	check_three_ptrs(self, input, output);
 
 	for (int i = 0; i < self->count; ++i) {
@@ -32,7 +31,7 @@ int network_handle_hard(struct neural_network *self, u_int8_t input[][COLUMN_WEI
 }
 
 
-int network_handle(struct neural_network *self, u_int8_t input[][COLUMN_WEIGHT], int *output) {
+int network_handle(struct neural_network *self, wsize input[][COLUMN_WEIGHT], int *output) {
 	check_three_ptrs(self, input, output);
 
 	for(size_t i = 0; i < self->count; ++i) {
@@ -42,7 +41,7 @@ int network_handle(struct neural_network *self, u_int8_t input[][COLUMN_WEIGHT],
 	return RC_OK;
 }
 
-int network_get_answer(struct neural_network *self, u_int8_t input[][COLUMN_WEIGHT], int *max_index) {
+int network_get_answer(struct neural_network *self, wsize input[][COLUMN_WEIGHT], int *max_index) {
 	check_ptr(max_index);
 
 	int output[self->count];
@@ -60,7 +59,7 @@ int network_get_answer(struct neural_network *self, u_int8_t input[][COLUMN_WEIG
 	return RC_OK;
 }
 
-int network_study(struct neural_network *self, u_int8_t input[][COLUMN_WEIGHT], char* name) {
+int network_study(struct neural_network *self, wsize input[][COLUMN_WEIGHT], char* name) {
 	check_three_ptrs(name, self, input);
 
 	if (self->number_learned >= self->count) {
@@ -73,7 +72,6 @@ int network_study(struct neural_network *self, u_int8_t input[][COLUMN_WEIGHT], 
 	memcpy(self->neuron[self->number_learned].name, name, LENGHT_NAME);
 
 	neuron_change_weights(&self->neuron[self->number_learned], input);
-	self->neuron[self->number_learned++].learned = 1;
 
 	return RC_OK;
 }

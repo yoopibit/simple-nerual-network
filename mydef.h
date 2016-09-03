@@ -8,6 +8,8 @@
 #define FOR_EACH_WEIGHT(row, column) 	for (int row = 0; row < ROW_WEIGHT; ++row) \
 										for (int column = 0; column < COLUMN_WEIGHT; ++column)
 
+#define wsize unsigned char
+
 #define RC_OK (0)
 #define RC_ERROR (-1)
 #define RC_SMALL_COUNT_NEURON (-2)

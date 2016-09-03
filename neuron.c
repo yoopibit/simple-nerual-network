@@ -5,21 +5,20 @@
 #include "neuron.h"
 #include "mydef.h"
 
-static void rand_weights(u_int8_t weight[][COLUMN_WEIGHT]);
+static void rand_weights(wsize weight[][COLUMN_WEIGHT]);
 
 void neuron_init(struct neuron *neuron, int neuron_max) {
 	neuron->max = neuron_max;
-	neuron->learned = 0;
 	memset(neuron->weight, 0, LENGHT_DATA);
 	rand_weights(neuron->weight);
 }
 
-static void rand_weights(u_int8_t weight[][COLUMN_WEIGHT]) {
+static void rand_weights(wsize weight[][COLUMN_WEIGHT]) {
 	FOR_EACH_WEIGHT(r,c)
-		weight[r][c] = (u_int8_t)rand() & 7;
+		weight[r][c] = (wsize)rand() & 7;
 }
 
-int neuron_transfer_hard(struct neuron *neuron, u_int8_t input[][COLUMN_WEIGHT]) {
+int neuron_transfer_hard(struct neuron *neuron, wsize input[][COLUMN_WEIGHT]) {
 	int power = 0;
 
 	FOR_EACH_WEIGHT(r,c)
@@ -28,7 +27,7 @@ int neuron_transfer_hard(struct neuron *neuron, u_int8_t input[][COLUMN_WEIGHT])
 	return power <= neuron->max ? 1 : 0;
 }
 
-int neuron_transfer(struct neuron *neuron, u_int8_t input[][COLUMN_WEIGHT]) {
+int neuron_transfer(struct neuron *neuron, wsize input[][COLUMN_WEIGHT]) {
 	int power = 0;
 
 	FOR_EACH_WEIGHT(r,c)
@@ -37,7 +36,7 @@ int neuron_transfer(struct neuron *neuron, u_int8_t input[][COLUMN_WEIGHT]) {
 	return power;
 }
 
-void neuron_change_weights(struct neuron *neuron, u_int8_t input[][COLUMN_WEIGHT]) {
+void neuron_change_weights(struct neuron *neuron, wsize input[][COLUMN_WEIGHT]) {
 	FOR_EACH_WEIGHT(r,c)
 			neuron->weight[r][c] = input[r][c];
 }

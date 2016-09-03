@@ -6,6 +6,7 @@
 
 #include <stdlib.h> // rand
 #include <string.h>
+#include "mydef.h"
 
 #define ROW_WEIGHT  (6)
 #define COLUMN_WEIGHT (10)
@@ -15,10 +16,9 @@
 struct neuron{
 	char name[LENGHT_NAME];
 
-	u_int8_t weight[ROW_WEIGHT][COLUMN_WEIGHT];
+	wsize weight[ROW_WEIGHT][COLUMN_WEIGHT];
 
 	int max;
-	int learned;
 };
 
 /**
@@ -31,21 +31,21 @@ void neuron_init(struct neuron *neuron, int neuron_minimum);
  * @ param input - input array
  * @ return 0 or 1
  */
-int neuron_transfer_hard(struct neuron *neuron, u_int8_t input[][COLUMN_WEIGHT]);
+int neuron_transfer_hard(struct neuron *neuron, wsize input[][COLUMN_WEIGHT]);
 
 /**
  * @ brief responses of neurons
  * @ param input - input array
  * @ return 0 or 1
  */
-int neuron_transfer(struct neuron *neuron, u_int8_t input[][COLUMN_WEIGHT]);
+int neuron_transfer(struct neuron *neuron, wsize input[][COLUMN_WEIGHT]);
 
 /**
  * @ brief change weights of neuron
  * @ param input - input array
  * @ param diff - difference between output of the neuron and the desired output
  */
-void neuron_change_weights(struct neuron *neuron, u_int8_t input[][COLUMN_WEIGHT]);
+void neuron_change_weights(struct neuron *neuron, wsize input[][COLUMN_WEIGHT]);
 
 //void neuron_prepare_serialization(struct neuron *neuron);
 //

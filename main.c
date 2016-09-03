@@ -7,7 +7,7 @@ void print_picture(char *about, char picure[][COLUMN_WEIGHT]);
 int main()
 {
 	struct neural_network *network = NULL;
-	int num_neurons = 10;
+	size_t num_neurons = 10;
 	int boundary_of_searching = 100; // less is better result in searching
 
 	network_init(&network, num_neurons, boundary_of_searching);
@@ -33,6 +33,10 @@ int main()
 	print_picture("not corected K letter:", K_letter_test);
 	network_get_answer(network, K_letter_test, &answer);
 	printf("the answer is %s\n\n", network->neuron[answer].name);
+
+	print_picture("not corected second number: ", second_num_test);
+	network_get_answer(network, second_num_test, &answer);
+	printf("the answer is %s \n\n", network->neuron[answer].name);
 
 	network_destroy(network);
 }

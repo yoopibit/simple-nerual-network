@@ -5,7 +5,7 @@
 #ifndef PROJECT_TEST_H
 #define PROJECT_TEST_H
 
-unsigned char K_letter[][10] = {
+unsigned char* K_letter[10] = {
 				" X    XX  ",
 				" X  X     ",
 				" XX       ",
@@ -57,6 +57,15 @@ unsigned char K_letter_test[][10] = {
 		" X  X     ",
 		" X     X  ",
 		"  X     X "
+};
+
+unsigned char second_num_test[][10] = {
+		"     XXXX ",
+		"   X    X ",
+		"       X  ",
+		"     X    ",
+		"     X    ",
+		"     XXXXX"
 };
 
 
